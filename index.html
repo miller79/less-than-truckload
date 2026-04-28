@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Less Than Truckload API Documentation</title>
+</head>
+<style>
+   body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    p {
+        max-width: 720px;
+        line-height: 1.6;
+    }
+    img.logo {
+        max-height: 100px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .tree {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    .tree ul {
+        list-style-type: none;
+        padding-left: 20px;
+        margin: 0;
+    }
+    .tree li {
+        margin: 3px 0;
+        position: relative;
+    }
+    .folder {
+        font-weight: bold;
+        color: #333;
+        cursor: pointer;
+        user-select: none;
+    }
+    .folder::before {
+        content: '📁 ';
+        margin-right: 5px;
+    }
+    .folder.collapsed::before {
+        content: '📂 ';
+    }
+    .file-link {
+        text-decoration: none;
+        padding: 2px 4px;
+        border-radius: 3px;
+        transition: background-color 0.2s;
+    }
+    .file-link:hover {
+        background-color: #f0f0f0;
+    }
+    .pdf-link {
+        color: #d9534f;
+    }
+    .pdf-link::before {
+        content: '📄 ';
+        margin-right: 5px;
+    }
+    .xlsx-link {
+        color: #5cb85c;
+    }
+    .xlsx-link::before {
+        content: '📊 ';
+        margin-right: 5px;
+    }
+    .openapi-link {
+        color: #5bc0de;
+    }
+    .openapi-link::before {
+        content: '📋 ';
+        margin-right: 5px;
+    }
+    .toggle {
+        display: inline-block;
+        width: 16px;
+        text-align: center;
+        cursor: pointer;
+        user-select: none;
+        margin-right: 3px;
+    }
+    .hidden {
+        display: none;
+    }
+</style>
+<body>
+    <img class="logo" src="images/DSDC-LTL.svg" alt="Company Logo">
+    <p>Supported by the Digital Standard Development Council's (DSDC) Digital LTL Council, these API standards help organizations modernize LTL workflows through standardized, open, and scalable integration.</p>
+    <h1>Less Than Truckload API Documentation</h1>
+    <ul class="tree" id="root">
+        <li>
+            <span class="toggle" onclick="toggleFolder(this)">▼</span>
+            <span class="folder">api-brds</span>
+            <ul>
+            <li><a class="file-link xlsx-link" href="api-brds/API BRD - Preliminary Freight Charges.xlsx" target="_blank">API BRD - Preliminary Freight Charges.xlsx</a></li>
+            </ul>
+        </li>
+        <li>
+            <span class="toggle" onclick="toggleFolder(this)">▼</span>
+            <span class="folder">api-prds</span>
+            <ul>
+            <li><a class="file-link pdf-link" href="api-prds/API PRD - Preliminary Freight Charges.pdf" target="_blank">API PRD - Preliminary Freight Charges.pdf</a></li>
+            </ul>
+        </li>
+        <li>
+            <span class="toggle" onclick="toggleFolder(this)">▼</span>
+            <span class="folder">api-specs</span>
+            <ul>
+            <li>
+                <span class="toggle" onclick="toggleFolder(this)">▼</span>
+                <span class="folder">preliminary-freight-charges</span>
+                <ul>
+                <li><a class="file-link openapi-link" href="api-specs/preliminary-freight-charges/v1.0/index.html">v1.0 (OpenAPI)</a></li>
+                </ul>
+            </li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        function toggleFolder(toggle) {
+            const li = toggle.parentElement;
+            const ul = li.querySelector('ul');
+            if (ul) {
+                ul.classList.toggle('hidden');
+                toggle.textContent = ul.classList.contains('hidden') ? '▶' : '▼';
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const folders = document.querySelectorAll('.folder');
+            folders.forEach(folder => {
+                folder.addEventListener('dblclick', function(e) {
+                    const toggle = this.previousElementSibling;
+                    if (toggle && toggle.classList.contains('toggle')) {
+                        toggleFolder(toggle);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
