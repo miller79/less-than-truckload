@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+
 currentFolder="$(pwd)"
 publicFolder="$currentFolder/public"
 allFolders=()
